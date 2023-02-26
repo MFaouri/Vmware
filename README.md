@@ -147,13 +147,16 @@ services:
 global:
   scrape_interval:     15s
   evaluation_interval: 15s
+
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
-  - job_name: 'node'
+  
+  - job_name: 'node-exporter'
+    scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['192.168.1.100:9100', '192.168.1.104:9100']
 
 ``` 
 
